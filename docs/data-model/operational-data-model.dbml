@@ -34,7 +34,7 @@ Table AGENTS {
 
 Table COSTS {
   cost_id int [pk]
-  date date [ref: > DATE_DIM.month]
+  date date [ref: > DATE_DIM.date]
   agent_type varchar [note: 'Human, AI, Shared']
   cost_category varchar [note: 'Payroll, Internal Commission, AI License, Cloud Infrastructure, AI Usage, Training, Supervision']
   cost_type varchar [note: 'Fixed, Variable']
