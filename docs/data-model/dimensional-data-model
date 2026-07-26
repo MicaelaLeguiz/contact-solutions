@@ -1,0 +1,93 @@
+// Dimensional data model - Contact Solutions / Global Experience
+
+Table FactCalls {
+  call_id int [pk]
+  customer_id int [ref: > DimCustomer.customer_id]
+  agent_id int [ref: > DimAgent.agent_id]
+  campaign_id int [ref: > DimCampaign.campaign_id]
+  call_date date [ref: > DimDate.date]
+  start_time time
+  end_time time
+  call_direction varchar 
+  channel varchar 
+  call_reason varchar 
+  call_result varchar 
+  acd_time_seconds int 
+  hold_time_seconds int 
+  acw_time_seconds int 
+  available_time_seconds int
+  abandon_time_seconds int 
+  call_duration_seconds int
+  csat_score int
+}
+
+Table DimAgent {
+  agent_id int [pk]
+  full_name varchar
+  agent_type varchar 
+  supervisor varchar
+  account varchar
+  employment_type varchar 
+  hire_date date
+  termination_date date 
+}
+
+Table FactCosts {
+  cost_id int [pk]
+  date date [ref: > DimDate.date]
+  agent_type varchar
+  cost_category varchar
+  cost_type varchar
+  amount decimal
+}
+
+Table DimCampaign {
+  campaign_id int [pk]
+  campaign_name varchar
+  destination varchar
+  country varchar
+  product_type varchar 
+  list_price decimal
+  discount decimal
+  monthly_target int
+  start_date date
+  end_date date
+}
+
+Table DimCustomer {
+  customer_id int [pk]
+  full_name varchar
+  age int
+  province varchar
+  country varchar
+  registration_date date
+  is_new_customer bool
+  trip_count int
+  customer_tier varchar 
+  primary_campaign_id int [ref: > DimCampaign.campaign_id]
+  secondary_campaign_id int [ref: > DimCampaign.campaign_id]
+  opportunity_status varchar 
+}
+
+Table FactSales {
+  sale_id int [pk]
+  customer_id int [ref: > DimCustomer.customer_id]
+  campaign_id int [ref: > DimCampaign.campaign_id]
+  sale_date date [ref: > DimDate.date]
+  payment_date date [ref: > DimDate.date]
+  payment_status varchar 
+  passenger_count int 
+  sale_amount decimal 
+  paid_amount decimal 
+  commission_rate decimal
+  commission_amount decimal 
+}
+
+Table DimDate {
+  date date [pk]
+  day int
+  week int
+  month int
+  quarter int
+  year int
+}
