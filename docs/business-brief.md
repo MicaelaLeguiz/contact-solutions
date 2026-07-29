@@ -7,9 +7,13 @@
 ## Un enfoque basado en datos para optimizar la combinación de agentes humanos e IA
 
 ---
+
+> The project documentation is written in English. A brief introduction is also provided in Spanish
+
+---
 ## Table of contents
 - [Executive summary](#1-executive-summary)
-- [Executive summary (spanish)](#1-resumen-ejecutivo)
+- [Executive summary (Spanish)](#1-resumen-ejecutivo)
 - [Business context](#2-business-context)
 - [Business problem](#3-business-problem)
 - [Objectives](#4-objectives)
@@ -63,7 +67,7 @@ Management requires a data-driven assessment of this initial implementation to q
 
 ## 4. Objectives
 
-### General objective
+### Objective
 
 Assess the operational and commercial impact of gradually introducing AI agents into a phone sales operation in order to recommend a hybrid workforce strategy that maximizes business value while meeting predefined budget and service quality constraints
 
