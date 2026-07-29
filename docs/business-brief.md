@@ -9,7 +9,7 @@
 ---
 ## Table of contents
 - [Executive summary](#1-executive-summary)
-- [Executive Summary (Spanish)](#1-resumen-ejecutivo)
+- [Executive summary (spanish)](#1-resumen-ejecutivo)
 - [Business context](#2-business-context)
 - [Business problem](#3-business-problem)
 - [Objectives](#4-objectives)
