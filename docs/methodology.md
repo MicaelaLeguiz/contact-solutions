@@ -2,9 +2,7 @@
 
 ## Purpose
 
-This document describes the methodology followed to develop this Business Intelligence project
-
-The project follows an iterative workflow inspired by CRISP-DM, adapted to a Business Intelligence solution. Each phase produces one or more deliverables that serve as the input for the next stage
+This document outlines the methodology used throughout the project
 
 ---
 
@@ -18,9 +16,14 @@ Define the business problem, stakeholders, objectives, research questions, hypot
 
 Design the operational and dimensional data models and document the business rules through the KPI Dictionary and Data Dictionary
 
-### 3. Data engineering
+### 3. Data architecture
 
-Prepare the source datasets, develop the ETL process, validate data quality, and load the analytical database
+The ETL pipeline generates two analytical repositories from the same transformed dataset.
+
+- **SQLite** serves as the local analytical database for SQL querying and Power BI reporting
+- **BigQuery** stores the same analytical model in a cloud data warehouse to support Looker Studio reporting
+
+This approach demonstrates both traditional relational database workflows and modern cloud analytics practices while maintaining a single source of truth for the transformed data
 
 ### 4. Data analysis
 
@@ -28,8 +31,8 @@ Perform SQL analysis, exploratory analysis in Python, and statistical validation
 
 ### 5. Decision support
 
-Develop executive dashboards and build a simplified optimization model to support business decisions
+Develop executive and operational dashboards and build a simplified optimization model to support business decisions
 
 ### 6. Communication
 
-Document the project, prepare the repository, and communicate the results through an executive report and an explainer video
+Develop executive and operational dashboards and build a simplified optimization model to support business decisions
