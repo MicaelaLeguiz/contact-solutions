@@ -30,7 +30,7 @@
 
 As AI-powered conversational agents become increasingly capable, organizations face a critical business question: **How much of a customer-facing operation should actually be automated?**
 
-Replacing human agents with AI promises lower operating costs, but reducing costs alone does not guarantee better business outcomes. Conversion, customer satisfaction, and profitability may improve—or deteriorate—as automation increases. This project approaches AI adoption as a business decision rather than a technology initiative. It develops an end-to-end Business Intelligence solution to evaluate the operational and financial impact of introducing AI agents into a phone sales operation and determine the workforce composition that maximizes expected profit while respecting budget and service quality constraints. The solution combines dimensional data modeling, ETL processes, statistical analysis, executive dashboards, and a simplified optimization model
+Replacing human agents with AI promises lower operating costs, but reducing costs alone does not guarantee better business outcomes. Conversion, customer satisfaction, and profitability may improve—or deteriorate—as automation increases. This project approaches AI adoption as a business decision rather than a technology initiative. It develops an end-to-end Business Intelligence solution to evaluate the operational and financial impact of introducing AI agents into a phone sales operation and determine the workforce composition that maximizes expected profit while respecting budget and service quality constraints. The solution combines dimensional data modeling, ETL processes, statistical analysis, executive and operational dashboards, and a simplified optimization model respecting budget and service quality constraints
 
 Although the case study focuses on a contact center, the analytical framework can be applied to organizations across different industries facing similar automation decisions
 
@@ -40,7 +40,7 @@ Although the case study focuses on a contact center, the analytical framework ca
 
 La incorporación de agentes conversacionales impulsados por inteligencia artificial plantea una pregunta cada vez más relevante para las organizaciones: **¿cuánto conviene automatizar una operación sin comprometer los resultados del negocio?**
 
-Reemplazar agentes humanos por IA promete reducir costos operativos, pero hacerlo no garantiza mejores niveles de conversión, satisfacción del cliente o rentabilidad. Este proyecto aborda la automatización como una decisión de negocio respaldada por datos. Para ello desarrolla una solución integral de Business Intelligence que combina procesos ETL, modelado dimensional, análisis estadístico, dashboards ejecutivos y un modelo simplificado de optimización para identificar la combinación de agentes humanos e IA que maximiza el beneficio esperado respetando restricciones de presupuesto y calidad del servicio
+Reemplazar agentes humanos por IA promete reducir costos operativos, pero hacerlo no garantiza mejores niveles de conversión, satisfacción del cliente o rentabilidad. Este proyecto aborda la automatización como una decisión de negocio respaldada por datos. Para ello desarrolla una solución integral de Business Intelligence que combina procesos ETL, modelado dimensional, análisis estadístico, dashboards ejecutivo y operacional y un modelo simplificado de optimización para identificar la combinación de agentes humanos e IA que maximiza el beneficio esperado respetando restricciones de presupuesto y calidad del servicio
 
 Aunque el caso de estudio se desarrolla sobre un contact center, la metodología puede aplicarse a organizaciones de diferentes industrias que enfrenten decisiones similares sobre automatización
 
@@ -105,9 +105,9 @@ See the complete project scope, assumptions, and constraints in the [Business br
 
 - [Roadmap](docs/roadmap.md) — Project phases, deliverables, and current status
 
-- [Operational Data Model](docs/data-model/operational-data-model.png) — Entity-relationship model of the operational database
+- [Operational data model](data-model/operational-data-model.dbml) ([View image](data-model/operational-data-model.png)) — Entity-relationship model of the operational database
 
-- [Dimensional Data Model](docs/data-model/dimensional-data-model.png) — Star schema used for analytics and reporting
+- [Dimensional data model](data-model/dimensional-data-model.dbml) ([View image](data-model/dimensional-data-model.png)) — Star schema used for analytics and reporting
 
 - [KPI Dictionary](docs/kpi-dictionary.md) — Business definitions and calculation logic for all KPIs
 
@@ -115,9 +115,12 @@ See the complete project scope, assumptions, and constraints in the [Business br
 
 ## 8. Tech stack
 
-- **SQL (SQLite)** — data loading and business queries
-- **Python (Pandas)** — ETL, descriptive and inferential statistics
-- **Power BI** — executive and operational dashboards
+- **Python (Pandas)** — ETL, data transformation, and statistical analysis
+- **SQLite** — local analytical database
+- **BigQuery** — cloud analytical data warehouse
+- **SQL** — analytical queries
+- **Power BI** — executive dashboard
+- **Looker Studio** — operational dashboard
 
 ## 9. Repository structure
 
@@ -145,7 +148,6 @@ As the project advances into ETL, SQL queries, statistical analysis, the optimiz
 🟢 In progress
 
 See the complete project roadmap in: - [Roadmap](docs/roadmap.md)
-
 ## 11. About the author
 
 **Micaela Leguizamon** — Data Analyst with a background in UX Research
