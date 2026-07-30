@@ -18,12 +18,14 @@ Design the operational and dimensional data models and document the business rul
 
 ### 3. Data architecture
 
-The ETL pipeline generates two analytical repositories from the same transformed dataset.
+The ETL pipeline generates two analytical repositories from the same transformed dataset
 
 - **SQLite** serves as the local analytical database for SQL querying and Power BI reporting
 - **BigQuery** stores the same analytical model in a cloud data warehouse to support Looker Studio reporting
 
 This approach demonstrates both traditional relational database workflows and modern cloud analytics practices while maintaining a single source of truth for the transformed data
+
+> During the ETL process, customer names are anonymized before loading the analytical repositories to prevent personally identifiable information (PII) from being exposed in the reporting layer
 
 ### 4. Data analysis
 
