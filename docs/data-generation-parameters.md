@@ -1,6 +1,6 @@
 # Data generation parameters
 
-> How much each variable changes
+> The goal is to calibrate the data generation parameters by defining the impact of each variable, selecting the appropriate formula, and setting the right level of random noise
 
 This document defines the five core formulas used to generate the synthetic dataset: conversion, call duration, CSAT, payment date, and costs. Each formula follows the same logic — a **base value** plus a set of **adjustments** that apply depending on the characteristics of the specific call, customer, or period, plus a small amount of **random noise** so the dataset does not look artificially clean
 
