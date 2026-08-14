@@ -24,11 +24,11 @@ This document defines how the synthetic dataset is constructed: dataset scale, t
 
 The AI agent's higher daily volume is proportional to the time savings already defined in the Call duration formula (AI calls run ~33% shorter on average), rather than an arbitrarily chosen number
 
-**Scope of "calls":** the total daily/monthly call count includes **all** possible outcomes defined in `CALLS.call_result` (Answered, No Answer, Voicemail, Invalid Number, Busy, Customer Abandoned) — not only effectively answered calls. This total, projected across each month's working days, lands within the project's original 120000 - 150000 calls/month estimate
+**Scope of "calls":** the total daily/monthly call count includes **all** possible outcomes defined in `CALLS.call_result` (Answered, No Answer, Voicemail, Invalid Number, Busy, Customer Abandoned) — not only effectively answered calls. This total, projected across each month's working days, lands within approximately 130,000 - 152,000 calls/month estimate
 
 ## 2. Tier and campaign distribution
 
-Consistent with `CUSTOMER.customer_tier` and `AGENTS.agent_type`
+Consistent with `CUSTOMERS.customer_tier` and `AGENTS.agent_type`
 
 ### 2.1 Customer tier distribution
 
@@ -115,6 +115,7 @@ Passenger count is defined by **three rules that must be reconciled**, since eac
 ## 4. Age variation across campaigns
 
 To avoid an overly strong relationship between age and campaign in the statistical analysis (Q5), age is not generated fully independently of campaign — but it is also not perfectly correlated with it
+
 | Campaign group | Typical age range |
 |---|---|
 | Standard-recommended | 18-45 |
