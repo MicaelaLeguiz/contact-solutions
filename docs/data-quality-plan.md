@@ -27,11 +27,12 @@ Each issue below is tied to a business reason already established elsewhere in t
 ## 2. CALLS
 
 **Sample size:** stated per month. Issues **can overlap on the same row** (e.g. a call can be both a duplicate and carry a negative duration) — this is intentional, reflecting how data quality issues actually compound in production data rather than occurring in isolation
+
 | # | Issue | Sample size | Business rationale | Detection (SQL) |
 |---|---|---|---|---|
 | 1 | Duplicate `call_id` | 3% of monthly calls | Simulates the source system re-logging the same event on retry | `GROUP BY ... HAVING COUNT(*) > 1`, or `ROW_NUMBER() OVER (PARTITION BY call_id ...)` to keep a single version |
-| 2 | Negative `call_duration_seconds` | 1% of monthly calls | Simulates a capture glitch — the duration is first calculated normally (as the sum of its component fields) and then flipped negative, rather than being generated as a nonsensical value directly | Recalculate from the underlying duration components (ACD + retention + ACW) |
-| 3 | Orphan records (`customer_id` not found in `CUSTOMERS`) | 3% of monthly calls | `CUSTOMERS` refreshes monthly while `CALLS` are captured continuously (documented refresh cadence in `data-dictionary.md`) — a customer added by Global Experience mid-month can start receiving calls before appearing in the next customer master update | `LEFT JOIN CUSTOMERS ON CALLS.customer_id = CUSTOMERS.customer_id WHERE CUSTOMERS.customer_id IS NULL` |
+| 2 | Negative `call_duration_seconds` | 1% of monthly calls | Simulates a capture glitch — the duration is first calculated normally (as the sum of its component fields) and then flipped negative, rather than being generated as a nonsensical value directly | Recalculate from the underlying duration components (acd_time_seconds + hold_time_seconds + acw_time_seconds) |
+| 3 | Orphan records (`customer_id` not found in `CUSTOMERS`) | 2,6% of monthly calls | `CUSTOMERS` refreshes monthly while `CALLS` are captured continuously (documented refresh cadence in `data-dictionary.md`) — a customer added by Global Experience mid-month can start receiving calls before appearing in the next customer master update | `LEFT JOIN CUSTOMERS ON CALLS.customer_id = CUSTOMERS.customer_id WHERE CUSTOMERS.customer_id IS NULL` |
 
 **Orphan record resolution process** (documented here since it is a multi-step process, not a single query):
 1. Detect orphans with the `LEFT JOIN` above
@@ -61,6 +62,6 @@ This transformation is applied to a **raw staging version** of `CAMPAIGNS`, not 
 
 ## 5. Validation approach
 
-Each issue above has a known, documented sample size. When the SQL cleaning queries run against the generated dataset (Phase 6 of 8), the count of detected and corrected rows should match. For row-level issues, detected counts should match the expected percentages within a small margin. Structural source-format issues should affect 100% of the relevant records by design.
+Each issue above has a known, documented sample size. When the SQL cleaning queries run against the generated dataset (Phase 6), the count of detected and corrected rows should match. For row-level issues, detected counts should match the expected percentages within a small margin. Structural source-format issues should affect 100% of the relevant records by design
 
 This turns the document into a validation checklist, not just a design record: if a cleaning query finds a significantly different count than what was designed here, it signals a need to check the generation script rather than assume the query is correct
