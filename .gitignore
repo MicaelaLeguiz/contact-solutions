@@ -1,0 +1,8 @@
+# Entornos virtuales
+.venv/
+venv/
+.venv-contact-solutions/
+
+# Archivos temporales de Python
+__pycache__/
+*.pyc
