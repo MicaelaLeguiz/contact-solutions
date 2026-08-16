@@ -133,10 +133,10 @@ The primary stakeholders of this project are Contact Solutions' executive board,
 - Predicting individual customer behavior
 - Real-time call routing optimization
 - Integration with Global Experience's live production systems or real-time infrastructure
-- Contact Solutions' revenue is modeled exclusively as a variable commission per closed sale; no fixed monthly management fee is assumed, since a constant fee would not affect the optimization model's optimal point regardless of its size
 
 ## 8. Assumptions and constraints
 
+- Contact Solutions' revenue is modeled exclusively as a variable commission per closed sale; no fixed monthly management fee is assumed, since a constant fee would not affect the optimization model's optimal point regardless of its size
 - All data used in the project is simulated
 - The analysis covers a three-month period
 - Only one client (Global Experience) is included
