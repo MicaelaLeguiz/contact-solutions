@@ -81,9 +81,10 @@ The complete list of research questions and hypotheses is available in the [Busi
 ### In scope
 
 - Comparative analysis of human and AI agents in a phone sales operation
-- ETL pipeline integrating multiple operational data sources
+- Design and generation of a synthetic dataset with a documented, business-driven generation logic
+- ETL pipeline integrating multiple operational data sources, with two analytical destinations (SQLite and BigQuery)
 - Analytical data model and KPI framework
-- Executive and operational Power BI dashboards
+- Executive (Power BI) and operational (Looker Studio) dashboards
 - Descriptive, inferential, and optimization-based analysis
 - Business recommendations for AI adoption
 
@@ -93,25 +94,22 @@ The complete list of research questions and hypotheses is available in the [Busi
 - NLP and conversation analysis
 - AI implementation
 - Real-time optimization
-- Production deployment
+- Integration with live production systems or real-time infrastructure
 
 See the complete project scope, assumptions, and constraints in the [Business brief](docs/business-brief.md)
 
 ## 7. Documentation
 
-- [Business Brief](docs/business-brief.md) — Business context, objectives, stakeholders, hypotheses, and project scope
-
+- [Business brief](docs/business-brief.md) — Business context, objectives, stakeholders, hypotheses, and project scope
 - [Methodology](docs/methodology.md) — Development approach and project workflow
-
 - [Roadmap](docs/roadmap.md) — Project phases, deliverables, and current status
-
-- [Operational data model](data-model/operational-data-model.dbml) ([View image](data-model/operational-data-model.png)) — Entity-relationship model of the operational database
-
-- [Dimensional data model](data-model/dimensional-data-model.dbml) ([View image](data-model/dimensional-data-model.png)) — Star schema used for analytics and reporting
-
-- [KPI Dictionary](docs/kpi-dictionary.md) — Business definitions and calculation logic for all KPIs
-
-- [Data Dictionary](docs/data-dictionary.md) — Metadata and business rules for all analytical tables and columns
+- [Operational data model](docs/data-model/operational-data-model.dbml) ([View image](docs/data-model/operational-data-model.png)) — Entity-relationship model of the operational database
+- [Dimensional data model](docs/data-model/dimensional-data-model.dbml) ([View image](docs/data-model/dimensional-data-model.png)) — Schema used for analytics and reporting
+- [KPI dictionary](docs/kpi-dictionary.md) — Business definitions and calculation logic for all KPIs
+- [Data dictionary](docs/data-dictionary.md) — Metadata and business rules for all analytical tables and columns
+- [Data generation parameters](docs/data-generation-parameters.md) — The core formulas (Conversion, Call duration, CSAT, Payment date, Costs) used to generate the synthetic dataset, with business rationale for each parameter
+- [Data generation rules](docs/data-generation-rules.md) — Dataset construction rules: volume, tier/campaign distribution, passenger count logic, age variation, and call generation order
+- [Data quality plan](docs/data-quality-plan.md) — Data quality issues intentionally introduced into the dataset, with detection and correction logic
 
 ## 8. Tech stack
 
@@ -134,6 +132,9 @@ contact-solutions/
 │   ├── roadmap.md
 │   ├── kpi-dictionary.md
 │   ├── data-dictionary.md
+│   ├── data-generation-parameters.md
+│   ├── data-generation-rules.md
+│   ├── data-quality-plan.md
 │   └── data-model/
 │       ├── operational-data-model.dbml
 │       ├── operational-data-model.png
@@ -147,10 +148,11 @@ As the project advances into ETL, SQL queries, statistical analysis, the optimiz
 
 🟢 In progress
 
-See the complete project roadmap in: - [Roadmap](docs/roadmap.md)
+See the complete project roadmap in: - [Roadmap](docs/roadmap.md)}
+
 ## 11. About the author
 
 **Micaela Leguizamon** — Data Analyst with a background in UX Research
 
 - LinkedIn: [linkedin.com/in/micaela-leguiz](https://www.linkedin.com/in/micaela-leguiz/)
-- Portfolio: [micaelaleguiz.framer.website](https://micaelaleguiz.framer.website/)
+- Portfolio: [micaelaleguiz.framer.website](https://micaelaleguiz.framer.website/en)
