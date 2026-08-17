@@ -6,3 +6,6 @@ venv/
 # Archivos temporales de Python
 __pycache__/
 *.pyc
+
+# Datos generados
+data/generated/
