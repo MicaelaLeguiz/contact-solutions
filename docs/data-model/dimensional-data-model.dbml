@@ -90,4 +90,5 @@ Table DimDate {
   month int
   quarter int
   year int
+  is_business_day bool
 }

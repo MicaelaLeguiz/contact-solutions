@@ -90,4 +90,5 @@ Table DATE_DIM {
   month int
   quarter int
   year int
+  is_business_day bool [note: 'TRUE for Monday through Friday, FALSE for Saturday and Sunday']
 }

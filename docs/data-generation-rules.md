@@ -18,13 +18,15 @@ This document defines how the synthetic dataset is constructed: dataset scale, t
 | Calls/day per human agent | 42 to 46 |
 | Calls/day per AI agent | 55 to 65 |
 | Total calls/day (August baseline) | ~6850 |
-| Working days — July | 21 |
-| Working days — August | 20 |
+| Working days — July | 23 |
+| Working days — August | 21 |
 | Working days — September | 22 |
 
 The AI agent's higher daily volume is proportional to the time savings already defined in the Call duration formula (AI calls run ~33% shorter on average), rather than an arbitrarily chosen number
 
-**Scope of "calls":** the total daily/monthly call count includes **all** possible outcomes defined in `CALLS.call_result` (Answered, No Answer, Voicemail, Invalid Number, Busy, Customer Abandoned) — not only effectively answered calls. This total, projected across each month's working days, lands within approximately 130,000 - 152,000 calls/month estimate
+**Business-day rule:** `DATE_DIM.is_business_day` is `TRUE` for Monday through Friday and `FALSE` for Saturday and Sunday. Operational activity is generated only on dates where `is_business_day = TRUE`
+
+**Scope of "calls":** the total daily/monthly call count includes **all** possible outcomes defined in `CALLS.call_result` (Answered, No Answer, Voicemail, Invalid Number, Busy, Customer Abandoned) — not only effectively answered calls. This total is projected across business days only, so monthly call volumes vary according to the number of operational days in each month
 
 ## 2. Tier and campaign distribution
 

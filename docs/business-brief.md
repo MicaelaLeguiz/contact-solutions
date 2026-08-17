@@ -51,7 +51,7 @@ Many organizations are incorporating AI-powered agents to reduce operational cos
 
 **Contact Solutions** is a fictional contact center service provider that supports clients across multiple industries, including banking, retail, tourism, and professional services. The company currently employs approximately **2,500 human agents** and has recently launched a digital transformation initiative focused on gradually introducing AI agents into selected operations
 
-As a pilot project, one of its tourism clients, **Global Experience**, implemented a hybrid workforce for its outbound vacation package sales operation over a three-month period. The operation consists of **150 agents**, including **141 human agents** and **9 AI agents**. During this period, operational, commercial, and customer experience metrics were collected to assess the performance of the hybrid model
+As a pilot project, one of its tourism clients, **Global Experience**, implemented a hybrid workforce for its outbound vacation package sales operation over a three-month period. The operation consists of **150 agents**, including **141 human agents** and **9 AI agents**. The operation runs Monday through Friday. During this period, operational, commercial, and customer experience metrics were collected to assess the performance of the hybrid model
 
 Senior management aims to evaluate the results of this pilot in order to define the optimal AI adoption strategy that maximizes expected business value while remaining within the monthly operating budget of **USD 380,000**. Additionally, to meet the service quality requirements established by Global Experience, the operation must maintain a minimum **Customer Satisfaction (CSAT) score of 85%**
 
@@ -138,7 +138,7 @@ The primary stakeholders of this project are Contact Solutions' executive board,
 
 - Contact Solutions' revenue is modeled exclusively as a variable commission per closed sale; no fixed monthly management fee is assumed, since a constant fee would not affect the optimization model's optimal point regardless of its size
 - All data used in the project is simulated
-- The analysis covers a three-month period
+- The operation runs Monday through Friday, with Saturdays and Sundays considered non-operating days
 - Only one client (Global Experience) is included
 - No learning curve effects are considered for AI or human agents
 - AI operational costs are assumed to remain constant throughout the analysis
