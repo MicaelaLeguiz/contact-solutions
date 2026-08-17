@@ -48,7 +48,7 @@ Aunque el caso de estudio se desarrolla sobre un contact center, la metodología
 
 **Contact Solutions** is a fictional contact center provider serving clients across banking, retail, tourism, and professional services, with roughly 2,500 human agents. The company has launched a digital transformation initiative to gradually introduce AI agents into selected accounts
 
-As a pilot, one of its tourism clients, **Global Experience**, ran a hybrid workforce for outbound vacation package sales over a three-month period: **150 agents total — 141 human, 9 AI**. Operational, commercial, and customer experience metrics were collected throughout, and this dataset is the basis for the analysis
+As a pilot, one of its tourism clients, **Global Experience**, ran a hybrid workforce for outbound vacation package sales over a three-month period: **150 agents total — 141 human, 9 AI**. The operation runs Monday through Friday. Operational, commercial, and customer experience metrics were collected throughout, and this dataset is the basis for the analysis
 
 Management needs to define the AI adoption strategy that maximizes expected business value while staying within a **monthly operating budget of USD 380,000** and maintaining a **minimum CSAT of 85%**, as required by the client
 
