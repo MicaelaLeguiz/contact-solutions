@@ -276,7 +276,7 @@ Calendar dimension used for time-based analysis
 | `month` | Integer | No | Month number | Value between 1 and 12 |
 | `quarter` | Integer | No | Quarter of the year | Value between 1 and 4 |
 | `year` | Integer | No | Calendar year | Four-digit year |
-| `is_business_day` | boolean | No | Indicates whether the date is an operational business day | `TRUE` if Monday through Friday, excluding holidays; otherwise `FALSE` |
+| `is_business_day` | boolean | No | Indicates whether the date is an operational business day | `TRUE` if Monday through Friday; otherwise `FALSE` |
 
 
 ---
