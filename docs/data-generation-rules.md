@@ -10,6 +10,7 @@ This document defines how the synthetic dataset is constructed: dataset scale, t
 - [3. Passenger count](#3-passenger-count)
 - [4. Age variation across campaigns](#4-age-variation-across-campaigns)
 - [5. Call result and call reason](#5-call-result-and-call-reason)
+- [6. Agent roster and multi-account scope](#6-agent-roster-and-multi-account-scope)
 
 ## 1. Dataset scale
 
@@ -178,3 +179,15 @@ Conversion is evaluated once per customer, based on the customer's characteristi
 ### 5.5 Agent assignment
 
 Each customer is assigned a single, fixed agent for the duration of a calendar month; all of that customer's calls within the month are handled by the same agent. The assignment can change from one month to the next. This resolves attribution cleanly, since `SALES` does not carry an `agent_id` — the agent (and agent type) responsible for a sale is always inferable from the customer and the month
+
+## 6. Agent roster and multi-account scope
+
+`AGENTS` includes agents from three client accounts — Global Experience, Aura Travel, and Vanguard Bank — even though this project's analysis is scoped to Global Experience only. This reflects Contact Solutions' real, shared agent master data rather than a table built solely for this project
+
+| Account | Human agents | AI agents | Supervisors |
+|---|---|---|---|
+| Global Experience | 141 baseline + 14 replacement agents | 9 | 10 |
+| Aura Travel | 65 (5% terminated within the pilot window, 20% part-time) | — | 7 |
+| Vanguard Bank | 35 (5% terminated within the pilot window, 20% part-time) | — | 4 |
+
+**Downstream impact:** `CALLS`, `SALES`, and `COSTS` must only ever reference agents where `account = "Global Experience"` **and** the agent is active on the relevant date (`hire_date` on or before the date, and either no `termination_date` or one that falls after it). Agents from other accounts should never generate activity in this project's fact tables
