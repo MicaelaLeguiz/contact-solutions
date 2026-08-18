@@ -25,7 +25,7 @@ def generate_date_dim(start_date: str, end_date: str) -> pd.DataFrame:
     df["year"] = df["date"].dt.year
     
     # Evaluate if the day of the week is between Monday (0) and Friday (4)
-    df["is_business_day"] = df["date"].dt.dayofweek < 5
+    df["is_business_day"] = (df["date"].dt.dayofweek < 5).astype(int)
 
     # Store the date as a plain string (YYYY-MM-DD), not a pandas Timestamp,
     # so the CSV output matches how a real date column would be exported.
