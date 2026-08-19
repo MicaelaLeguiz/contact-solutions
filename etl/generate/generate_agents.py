@@ -1,9 +1,9 @@
 """
 Generates AGENTS: the Contact Solutions agent roster across all client accounts,
-matching the columns defined in docs/data-model/operational-data-model.dbml.
+matching the columns defined in docs/data-model/operational-data-model.dbml
 
 Global Experience includes the 141-agent operational baseline plus a small
-replacement pool to simulate turnover during the pilot period.
+replacement pool to simulate turnover during the pilot period
 """
 
 import numpy as np
@@ -90,13 +90,14 @@ def generate_global_agents(
     n_base: int,
     n_replacements: int,
     supervisors: list[str],
+    start_id: int,
 ) -> pd.DataFrame:
     """Generates Global Experience human agents and replacement agents"""
 
     total_humans = n_base + n_replacements
-
+    
     df = pd.DataFrame({
-        "agent_id": range(1, total_humans + 1),
+        "agent_id": range(start_id, start_id + total_humans),
         "full_name": [fake.name() for _ in range(total_humans)],
         "agent_type": "Human",
         "supervisor": assign_supervisors(total_humans, supervisors),
@@ -231,34 +232,35 @@ def generate_ai_agents(
 def main():
     global_supervisors = generate_supervisors(N_GLOBAL_HUMAN_SUPERVISORS)
 
+    current_id = 2497
+
     global_humans = generate_global_agents(
         N_GLOBAL_HUMAN_BASE,
         N_GLOBAL_REPLACEMENTS,
         global_supervisors,
+        start_id=current_id,
     )
+    current_id += len(global_humans)
 
     aura_agents = generate_client_agents(
         N_AURA_HUMAN,
-        start_id=len(global_humans) + 1,
+        start_id=current_id,
         account=ACCOUNT_AURA,
         n_supervisors=N_AURA_SUPERVISORS,
     )
+    current_id += len(aura_agents)
 
     vanguard_agents = generate_client_agents(
         N_VANGUARD_HUMAN,
-        start_id=len(global_humans) + len(aura_agents) + 1,
+        start_id=current_id,
         account=ACCOUNT_VANGUARD,
         n_supervisors=N_VANGUARD_SUPERVISORS,
     )
+    current_id += len(vanguard_agents)
 
     ai_agents = generate_ai_agents(
         N_GLOBAL_AI,
-        start_id=(
-            len(global_humans)
-            + len(aura_agents)
-            + len(vanguard_agents)
-            + 1
-        ),
+        start_id=current_id,
     )
 
     df = pd.concat(
@@ -271,13 +273,8 @@ def main():
         ignore_index=True,
     )
 
-    df["hire_date"] = pd.to_datetime(df["hire_date"]).dt.strftime(
-        "%Y-%m-%d"
-    )
-
-    df["termination_date"] = pd.to_datetime(
-        df["termination_date"]
-    ).dt.strftime("%Y-%m-%d")
+    df["hire_date"] = pd.to_datetime(df["hire_date"]).dt.strftime("%Y-%m-%d")
+    df["termination_date"] = pd.to_datetime(df["termination_date"]).dt.strftime("%Y-%m-%d")
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(OUTPUT_PATH, index=False)
@@ -290,16 +287,10 @@ def main():
     print(df["agent_type"].value_counts())
 
     print("\nEmployment type by account:")
-    print(
-        df.groupby(["account", "employment_type"])
-        .size()
-    )
+    print(df.groupby(["account", "employment_type"]).size())
 
     print("\nTerminations by account:")
-    print(
-        df.groupby("account")["termination_date"]
-        .apply(lambda x: x.notna().sum())
-    )
+    print(df.groupby("account")["termination_date"].apply(lambda x: x.notna().sum()))
 
 
 if __name__ == "__main__":
