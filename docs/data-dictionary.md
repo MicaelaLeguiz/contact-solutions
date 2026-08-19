@@ -106,7 +106,7 @@ Stores one record for every customer interaction handled by Contact Solutions
 | `call_id` | Integer | No | Unique identifier for each customer interaction | Primary key |
 | `customer_id` | Integer | No | Identifier of the customer associated with the call | Foreign key referencing `DimCustomer` |
 | `agent_id` | Integer | No | Identifier of the agent who handled the interaction | Foreign key referencing `DimAgent` |
-| `campaign_id` | Integer | No | Identifier of the campaign associated with the call | Foreign key referencing `DimCampaign` |
+| `campaign_id` | Varchar | No | Identifier of the campaign associated with the call | Foreign key referencing `DimCampaign` |
 | `call_date` | Date | No | Date on which the interaction took place | Foreign key referencing `DimDate` |
 | `start_time` | Time | No | Time when the interaction started | Used to calculate call duration |
 | `end_time` | Time | No | Time when the interaction ended | Must be greater than or equal to `start_time` |
@@ -140,7 +140,7 @@ Stores one record for every confirmed sale reported by Global Experience
 |--------|-----------|----------|-------------|---------------|
 | `sale_id` | Integer | No | Unique identifier for each sale | Primary key |
 | `customer_id` | Integer | No | Identifier of the customer who completed the purchase | Foreign key referencing `DimCustomer` |
-| `campaign_id` | Integer | No | Identifier of the purchased campaign | Foreign key referencing `DimCampaign` |
+| `campaign_id` | Varchar | No | Identifier of the purchased campaign | Foreign key referencing `DimCampaign` |
 | `sale_date` | Date | No | Date when the sale was confirmed | Foreign key referencing `DimDate` |
 | `payment_date` | Date | Yes | Date when the payment was completed | Foreign key referencing `DimDate` |
 | `payment_status` | Varchar | No | Current payment status of the sale | Allowed values are defined in the data model |
@@ -198,8 +198,8 @@ Stores customer master data received from Global Experience
 | `is_new_customer` | Boolean | No | Indicates whether the customer is new during the current reporting period | True if the customer registered during the current reporting period |
 | `trip_count` | Integer | No | Number of trips previously completed by the customer | Must be greater than or equal to zero |
 | `customer_tier` | Varchar | No | Customer loyalty segment | Allowed values are defined in the data model |
-| `primary_campaign_id` | Integer | No | Campaign recommended as the primary offer for the customer | Foreign key referencing `DimCampaign`. Recommendation provided by Global Experience |
-| `secondary_campaign_id` | Integer | Yes | Alternative campaign recommended for the customer | Foreign key referencing `DimCampaign`. Recommendation provided by Global Experience |
+| `primary_campaign_id` | Varchar | No | Campaign recommended as the primary offer for the customer | Foreign key referencing `DimCampaign`. Recommendation provided by Global Experience |
+| `secondary_campaign_id` | Varchar | Yes | Alternative campaign recommended for the customer | Foreign key referencing `DimCampaign`. Recommendation provided by Global Experience |
 | `opportunity_status` | Varchar | No | Current commercial status of the customer | Stores the latest available status only. Allowed values are defined in the data model |
 
 ---
@@ -218,7 +218,7 @@ Stores information about tourism campaigns and products offered by Global Experi
 
 | Field | Data Type | Nullable | Description | Business Rule |
 |--------|-----------|----------|-------------|---------------|
-| `campaign_id` | Integer | No | Unique identifier for each campaign | Primary key |
+| `campaign_id` | Varchar | No | Unique identifier for each campaign | Primary key |
 | `campaign_name` | Varchar | No | Commercial name of the campaign | Free-text value provided by Global Experience |
 | `destination` | Varchar | No | Destination associated with the travel package | Free-text value provided by Global Experience |
 | `country` | Varchar | No | Country where the destination is located | Free-text value provided by Global Experience |
