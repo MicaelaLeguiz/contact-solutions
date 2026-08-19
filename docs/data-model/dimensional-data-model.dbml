@@ -4,7 +4,7 @@ Table FactCalls {
   call_id int [pk]
   customer_id int [ref: > DimCustomer.customer_id]
   agent_id int [ref: > DimAgent.agent_id]
-  campaign_id int [ref: > DimCampaign.campaign_id]
+  campaign_id varchar [ref: > DimCampaign.campaign_id]
   call_date date [ref: > DimDate.date]
   start_time time
   end_time time
@@ -42,7 +42,7 @@ Table FactCosts {
 }
 
 Table DimCampaign {
-  campaign_id int [pk]
+  campaign_id varchar [pk]
   campaign_name varchar
   destination varchar
   country varchar
@@ -64,15 +64,15 @@ Table DimCustomer {
   is_new_customer bool
   trip_count int
   customer_tier varchar 
-  primary_campaign_id int [ref: > DimCampaign.campaign_id]
-  secondary_campaign_id int [ref: > DimCampaign.campaign_id]
+  primary_campaign_id varchar [ref: > DimCampaign.campaign_id]
+  secondary_campaign_id varchar [ref: > DimCampaign.campaign_id]
   opportunity_status varchar 
 }
 
 Table FactSales {
   sale_id int [pk]
   customer_id int [ref: > DimCustomer.customer_id]
-  campaign_id int [ref: > DimCampaign.campaign_id]
+  campaign_id varchar [ref: > DimCampaign.campaign_id]
   sale_date date [ref: > DimDate.date]
   payment_date date [ref: > DimDate.date]
   payment_status varchar 
